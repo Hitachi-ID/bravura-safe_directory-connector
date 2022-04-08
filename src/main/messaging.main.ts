@@ -1,7 +1,7 @@
 import { ipcMain } from "electron";
 
 import { TrayMain } from "jslib-electron/tray.main";
-import { UpdaterMain } from "jslib-electron/updater.main";
+//  import { UpdaterMain } from "jslib-electron/updater.main";
 import { WindowMain } from "jslib-electron/window.main";
 
 import { MenuMain } from "./menu.main";
@@ -14,7 +14,7 @@ export class MessagingMain {
   constructor(
     private windowMain: WindowMain,
     private menuMain: MenuMain,
-    private updaterMain: UpdaterMain,
+//    private updaterMain: UpdaterMain,
     private trayMain: TrayMain
   ) {}
 
@@ -24,9 +24,9 @@ export class MessagingMain {
 
   onMessage(message: any) {
     switch (message.command) {
-      case "checkForUpdate":
-        this.updaterMain.checkForUpdate(true);
-        break;
+//      case "checkForUpdate":
+//        this.updaterMain.checkForUpdate(true);
+//        break;
       case "scheduleNextDirSync":
         this.scheduleNextSync();
         break;

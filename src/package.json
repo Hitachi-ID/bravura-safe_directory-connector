@@ -1,8 +1,8 @@
 {
-  "name": "@bitwarden/directory-connector",
-  "productName": "Bitwarden Directory Connector",
-  "description": "Sync your user directory to your Bitwarden organization.",
-  "version": "2.10.0",
+  "name": "bravura-safe-directory-connector",
+  "productName": "Bravura Safe Directory Connector",
+  "description": "Sync your user directory to your Bravura Safe organization.",
+  "version": "22.03.01",
   "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
   "homepage": "https://bitwarden.com",
   "license": "GPL-3.0",

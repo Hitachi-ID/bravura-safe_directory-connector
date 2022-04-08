@@ -1,6 +1,6 @@
 {
-  "name": "@bitwarden/directory-connector",
-  "description": "Sync your user directory to your Bitwarden organization.",
+  "name": "bravura-safe-directory-connector",
+  "description": "Sync your user directory to your Bravura Safe organization.",
   "version": "0.0.0",
   "keywords": [
     "bitwarden",
@@ -64,11 +64,11 @@
   },
   "build": {
     "extraMetadata": {
-      "name": "bitwarden-directory-connector"
+      "name": "bravura-safe-directory-connector"
     },
-    "productName": "Bitwarden Directory Connector",
+    "productName": "Bravura Safe Directory Connector",
     "appId": "com.bitwarden.directory-connector",
-    "copyright": "Copyright © 2015-2022 Bitwarden Inc.",
+    "copyright": "Copyright © 2015-2022 Bitwarden Inc., with modifications © 2022, Hitachi ID Systems, Inc.",
     "directories": {
       "buildResources": "resources",
       "output": "dist",
@@ -95,14 +95,14 @@
     },
     "linux": {
       "category": "Utility",
-      "synopsis": "Sync your user directory to your Bitwarden organization.",
+      "synopsis": "Sync your user directory to your Bravura Safe organization.",
       "target": [
         "AppImage"
       ]
     },
     "dmg": {
-      "artifactName": "Bitwarden-Connector-${version}.${ext}",
-      "icon": "dmg.icns",
+      "artifactName": "Bravura-Safe-Connector-${version}.${ext}",
+      "icon": "icon.icns",
       "contents": [
         {
           "x": 150,
@@ -125,15 +125,15 @@
       "oneClick": false,
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
-      "artifactName": "Bitwarden-Connector-Installer-${version}.${ext}",
+      "artifactName": "Bravura-Safe-Connector-Installer-${version}.${ext}",
       "uninstallDisplayName": "${productName}",
       "deleteAppDataOnUninstall": true
     },
     "portable": {
-      "artifactName": "Bitwarden-Connector-Portable-${version}.${ext}"
+      "artifactName": "Bravura-Safe-Connector-Portable-${version}.${ext}"
     },
     "appImage": {
-      "artifactName": "Bitwarden-Connector-${version}-${arch}.${ext}"
+      "artifactName": "Bravura-Safe-Connector-${version}-${arch}.${ext}"
     }
   },
   "devDependencies": {
