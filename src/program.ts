@@ -79,8 +79,8 @@ export class Program extends BaseProgram {
       writeLn("    bwdc test");
       writeLn("    bwdc sync");
       writeLn("    bwdc last-sync");
-      writeLn("    bwdc config server https://bw.company.com");
-      writeLn("    bwdc update");
+      writeLn("    bwdc config server https://hid.company.com");
+//    writeLn("    bwdc update");
       writeLn("", true);
     });
 
@@ -212,8 +212,8 @@ export class Program extends BaseProgram {
         writeLn("");
         writeLn("  Examples:");
         writeLn("");
-        writeLn("    bwdc config server https://bw.company.com");
-        writeLn("    bwdc config server bitwarden.com");
+        writeLn("    bwdc config server https://hid.company.com");
+        writeLn("    bwdc config server hitachi-id.com");
         writeLn("    bwdc config directory 1");
         writeLn("    bwdc config ldap.password <password>");
         writeLn("    bwdc config ldap.password --secretenv LDAP_PWD");
@@ -262,7 +262,7 @@ export class Program extends BaseProgram {
         const response = await command.run(options);
         this.processResponse(response);
       });
-
+/*
     program
       .command("update")
       .description("Check for updates.")
@@ -290,7 +290,7 @@ export class Program extends BaseProgram {
         const response = await command.run();
         this.processResponse(response);
       });
-
+*/
     program.parse(process.argv);
 
     if (process.argv.slice(2).length === 0) {
