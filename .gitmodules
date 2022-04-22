@@ -1,4 +1,5 @@
 [submodule "jslib"]
 	path = jslib
-	url = https://github.com/bitwarden/jslib.git
-	branch = master
+	url = https://gitlab.hitachi-id.com/product/bravura-safe/jslib.git
+	branch = develop
+	

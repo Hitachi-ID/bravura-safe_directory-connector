@@ -30,7 +30,7 @@
         "message": "Client Secret is required."
     },
     "orgApiKeyRequired": {
-        "message": "Api Key must belong to an Organization"
+        "message": "Api Key must belong to a Team"
     },
     "failedToSaveCredentials": {
         "message": "Failed to save credentials"
@@ -116,7 +116,7 @@
         "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
     },
     "duoOrganizationDesc": {
-        "message": "Verify with Duo Security for your organization using the Duo Mobile app, SMS, phone call, or U2F security key.",
+        "message": "Verify with Duo Security for your team using the Duo Mobile app, SMS, phone call, or U2F security key.",
         "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
     },
     "u2fDesc": {
@@ -500,7 +500,7 @@
         "message": "Dashboard"
     },
     "organization": {
-        "message": "Organization"
+        "message": "Team"
     },
     "more": {
         "message": "More"
@@ -509,7 +509,7 @@
         "message": "Other"
     },
     "organizationUrl": {
-        "message": "Organization URL"
+        "message": "Team URL"
     },
     "token": {
         "message": "Token"
@@ -548,7 +548,7 @@
         "message": "Testing"
     },
     "testingDesc": {
-        "message": "You can run tests to see how your directory and sync settings are working. Tests will not sync to your Bravura Safe organization."
+        "message": "You can run tests to see how your directory and sync settings are working. Tests will not sync to your Bravura Safe team."
     },
     "testNow": {
         "message": "Test Now"
@@ -609,7 +609,7 @@
         "message": "Welcome to the Bravura Safe Directory Connector"
     },
     "logInDesc": {
-        "message": "Log in with an organization API key below."
+        "message": "Log in with a team API key below."
     },
     "dirConfigIncomplete": {
         "message": "Directory configuration incomplete."
@@ -647,7 +647,7 @@
         "message": "More than 2000 users or groups are expected to sync."
     },
     "overwriteExisting": {
-        "message": "Overwrite existing organization users based on current sync settings."
+        "message": "Overwrite existing team users based on current sync settings."
     },
     "clientId": {
         "message": "Client ID"
@@ -674,7 +674,7 @@
         "message": "Confirm New Master Password"
     },
     "masterPasswordPolicyInEffect": {
-        "message": "One or more organization policies require your master password to meet the following requirements:"
+        "message": "One or more team policies require your master password to meet the following requirements:"
     },
     "policyInEffectMinComplexity": {
         "message": "Minimum complexity score of $SCORE$",

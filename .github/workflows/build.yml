@@ -298,12 +298,12 @@ jobs:
             BLOCK "040904b0"
             {
               VALUE "CompanyName", "Bitwarden Inc."
-              VALUE "ProductName", "Bitwarden"
-              VALUE "FileDescription", "Bitwarden Directory Connector CLI"
+              VALUE "ProductName", "Bravura Safe"
+              VALUE "FileDescription", "Bravura Safe Directory Connector CLI"
               VALUE "FileVersion", "$env:_PACKAGE_VERSION"
               VALUE "ProductVersion", "$env:_PACKAGE_VERSION"
-              VALUE "OriginalFilename", "bwdc.exe"
-              VALUE "InternalName", "bwdc"
+              VALUE "OriginalFilename", "bsafedc.exe"
+              VALUE "InternalName", "bsafedc"
               VALUE "LegalCopyright", "Copyright Bitwarden Inc., with modifications Hitachi ID Systems, Inc."
             }
           }
@@ -428,22 +428,22 @@ jobs:
       - name: Upload Portable Executable to GitHub
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-Portable-${{ env._PACKAGE_VERSION }}.exe
-          path: ./dist/Bitwarden-Connector-Portable-${{ env._PACKAGE_VERSION }}.exe
+          name: Bravura-Safe-Connector-Portable-${{ env._PACKAGE_VERSION }}.exe
+          path: ./dist/Bravura-Safe-Connector-Portable-${{ env._PACKAGE_VERSION }}.exe
           if-no-files-found: error
 
       - name: Upload Installer Executable to GitHub
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe
-          path: ./dist/Bitwarden-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe
+          name: Bravura-Safe-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe
+          path: ./dist/Bravura-Safe-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe
           if-no-files-found: error
 
       - name: Upload Installer Executable Blockmap to GitHub
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe.blockmap
-          path: ./dist/Bitwarden-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe.blockmap
+          name: Bravura-Safe-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe.blockmap
+          path: ./dist/Bravura-Safe-Connector-Installer-${{ env._PACKAGE_VERSION }}.exe.blockmap
           if-no-files-found: error
 
       - name: Upload latest auto-update artifact
@@ -497,8 +497,8 @@ jobs:
       - name: Upload AppImage
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-${{ env._PACKAGE_VERSION }}-x86_64.AppImage
-          path: ./dist/Bitwarden-Connector-${{ env._PACKAGE_VERSION }}-x86_64.AppImage
+          name: Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}-x86_64.AppImage
+          path: ./dist/Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}-x86_64.AppImage
           if-no-files-found: error
 
       - name: Upload latest auto-update artifact
@@ -604,28 +604,28 @@ jobs:
       - name: Rename Zip Artifact
         run: |
           cd dist
-          mv "Bitwarden Directory Connector-${{ env._PACKAGE_VERSION }}-mac.zip" \
-             "Bitwarden-Connector-${{ env._PACKAGE_VERSION }}-mac.zip"
+          mv "Bravura Safe Directory Connector-${{ env._PACKAGE_VERSION }}-mac.zip" \
+             "Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}-mac.zip"
 
       - name: Upload .zip artifact
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-${{ env._PACKAGE_VERSION }}-mac.zip
-          path: ./dist/Bitwarden-Connector-${{ env._PACKAGE_VERSION }}-mac.zip
+          name: Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}-mac.zip
+          path: ./dist/Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}-mac.zip
           if-no-files-found: error
 
       - name: Upload .dmg artifact
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-${{ env._PACKAGE_VERSION }}.dmg
-          path: ./dist/Bitwarden-Connector-${{ env._PACKAGE_VERSION }}.dmg
+          name: Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg
+          path: ./dist/Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg
           if-no-files-found: error
 
       - name: Upload .dmg Blockmap artifact
         uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700  # v2.2.3
         with:
-          name: Bitwarden-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
-          path: ./dist/Bitwarden-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
+          name: Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
+          path: ./dist/Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
           if-no-files-found: error
 
       - name: Upload latest auto-update artifact
