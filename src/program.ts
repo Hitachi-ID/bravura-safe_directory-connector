@@ -75,20 +75,20 @@ export class Program extends BaseProgram {
     program.on("--help", () => {
       writeLn("\n  Examples:");
       writeLn("");
-      writeLn("    bwdc login");
-      writeLn("    bwdc test");
-      writeLn("    bwdc sync");
-      writeLn("    bwdc last-sync");
-      writeLn("    bwdc config server https://hid.company.com");
-//    writeLn("    bwdc update");
+      writeLn("    bsafedc login");
+      writeLn("    bsafedc test");
+      writeLn("    bsafedc sync");
+      writeLn("    bsafedc last-sync");
+      writeLn("    bsafedc config server https://bravura.safe.company.com");
+  //  writeLn("    bwdc update");
       writeLn("", true);
     });
 
     program
       .command("login [clientId] [clientSecret]")
-      .description("Log into an organization account.", {
-        clientId: "Client_id part of your organization's API key",
-        clientSecret: "Client_secret part of your organization's API key",
+      .description("Log into a team account.", {
+        clientId: "Client_id part of your team's API key",
+        clientSecret: "Client_secret part of your team's API key",
       })
       .action(async (clientId: string, clientSecret: string, options: program.OptionValues) => {
         await this.exitIfAuthed();
@@ -125,7 +125,7 @@ export class Program extends BaseProgram {
       .on("--help", () => {
         writeLn("\n  Examples:");
         writeLn("");
-        writeLn("    bwdc logout");
+        writeLn("    bsafedc logout");
         writeLn("", true);
       })
       .action(async () => {
@@ -146,8 +146,8 @@ export class Program extends BaseProgram {
       .on("--help", () => {
         writeLn("\n  Examples:");
         writeLn("");
-        writeLn("    bwdc test");
-        writeLn("    bwdc test --last");
+        writeLn("    bsafedc test");
+        writeLn("    bsafedc test --last");
         writeLn("", true);
       })
       .action(async (options: program.OptionValues) => {
@@ -163,7 +163,7 @@ export class Program extends BaseProgram {
       .on("--help", () => {
         writeLn("\n  Examples:");
         writeLn("");
-        writeLn("    bwdc sync");
+        writeLn("    bsafedc sync");
         writeLn("", true);
       })
       .action(async () => {
@@ -183,8 +183,8 @@ export class Program extends BaseProgram {
         writeLn("");
         writeLn("  Examples:");
         writeLn("");
-        writeLn("    bwdc last-sync groups");
-        writeLn("    bwdc last-sync users");
+        writeLn("    bsafedc last-sync groups");
+        writeLn("    bsafedc last-sync users");
         writeLn("", true);
       })
       .action(async (object: string) => {
@@ -212,15 +212,15 @@ export class Program extends BaseProgram {
         writeLn("");
         writeLn("  Examples:");
         writeLn("");
-        writeLn("    bwdc config server https://hid.company.com");
-        writeLn("    bwdc config server hitachi-id.com");
-        writeLn("    bwdc config directory 1");
-        writeLn("    bwdc config ldap.password <password>");
-        writeLn("    bwdc config ldap.password --secretenv LDAP_PWD");
-        writeLn("    bwdc config azure.key <key>");
-        writeLn("    bwdc config gsuite.key <key>");
-        writeLn("    bwdc config okta.token <token>");
-        writeLn("    bwdc config onelogin.secret <secret>");
+        writeLn("    bsafedc config server https://bravura.safe.company.com");
+        writeLn("    bsafedc config server bravura.safe.com");
+        writeLn("    bsafedc config directory 1");
+        writeLn("    bsafedc config ldap.password <password>");
+        writeLn("    bsafedc config ldap.password --secretenv LDAP_PWD");
+        writeLn("    bsafedc config azure.key <key>");
+        writeLn("    bsafedc config gsuite.key <key>");
+        writeLn("    bsafedc config okta.token <token>");
+        writeLn("    bsafedc config onelogin.secret <secret>");
         writeLn("", true);
       })
       .action(async (setting: string, value: string, options: program.OptionValues) => {
@@ -239,7 +239,7 @@ export class Program extends BaseProgram {
       .on("--help", () => {
         writeLn("\n  Examples:");
         writeLn("");
-        writeLn("    bwdc data-file");
+        writeLn("    bsafedc data-file");
         writeLn("", true);
       })
       .action(() => {
@@ -254,7 +254,7 @@ export class Program extends BaseProgram {
       .on("--help", () => {
         writeLn("\n  Examples:");
         writeLn("");
-        writeLn("    bwdc clear-cache");
+        writeLn("    bsafedc clear-cache");
         writeLn("", true);
       })
       .action(async (options: program.OptionValues) => {

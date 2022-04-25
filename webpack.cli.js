@@ -50,7 +50,7 @@ const config = {
     __filename: false,
   },
   entry: {
-    bwdc: "./src/bwdc.ts",
+    bsafedc: "./src/bwdc.ts",
   },
   optimization: {
     minimize: false,

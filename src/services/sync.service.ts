@@ -89,7 +89,7 @@ export class SyncService {
 
       const orgId = await this.stateService.getOrganizationId();
       if (orgId == null) {
-        throw new Error("Organization not set.");
+        throw new Error("Team not set.");
       }
 
       // TODO: Remove hashLegacy once we're sure clients have had time to sync new hashes
