@@ -304,4 +304,8 @@ export abstract class StateService<T extends Account = Account> {
   setStateVersion: (value: number) => Promise<void>;
   getWindow: () => Promise<WindowState>;
   setWindow: (value: WindowState) => Promise<void>;
+  getFoldersCollapsed: (options?: StorageOptions) => Promise<boolean>;
+  setFoldersCollapsed: (value: boolean, options?: StorageOptions) => Promise<void>;
+  getCollectionsCollapsed: (options?: StorageOptions) => Promise<boolean>;
+  setCollectionsCollapsed: (value: boolean, options?: StorageOptions) => Promise<void>;  
 }

@@ -98,6 +98,8 @@ const v1Keys: { [key: string]: string } = {
   vaultTimeoutAction: "vaultTimeoutAction",
   vaultTimeout: "lockOption",
   rememberedEmail: "rememberedEmail",
+  foldersCollapsed: "foldersCollapsed",
+  collectionsCollapsed: "collectionsCollapsed",
 };
 
 const v1KeyPrefixes: { [key: string]: string } = {
@@ -308,6 +310,12 @@ export class StateMigrationService<
       vaultTimeoutAction:
         (await this.get<string>(v1Keys.vaultTimeoutAction)) ??
         defaultAccount.settings.vaultTimeoutAction,
+      foldersCollapsed:
+        (await this.get<boolean>(v1Keys.foldersCollapsed)) ??
+        defaultAccount.settings.foldersCollapsed,
+      collectionsCollapsed:
+        (await this.get<boolean>(v1Keys.collectionsCollapsed)) ??
+        defaultAccount.settings.collectionsCollapsed,        
     };
 
     // (userId == null) = no logged in user (so no known userId) and we need to temporarily store account specific settings in state to migrate on first auth

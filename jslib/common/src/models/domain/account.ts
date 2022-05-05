@@ -132,6 +132,8 @@ export class AccountSettings {
   settings?: any; // TODO: Merge whatever is going on here into the AccountSettings model properly
   vaultTimeout?: number;
   vaultTimeoutAction?: string = "lock";
+  foldersCollapsed?: boolean;
+  collectionsCollapsed?: boolean;
 }
 
 export class AccountTokens {

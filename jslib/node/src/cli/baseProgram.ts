@@ -19,14 +19,14 @@ export abstract class BaseProgram {
     dataProcessor: () => string = null
   ) {
     if (!response.success) {
-      if (process.env.BW_QUIET !== "true") {
-        if (process.env.BW_RESPONSE === "true") {
+      if (process.env.BSAFEDC_QUIET !== "true") {
+        if (process.env.BSAFEDC_RESPONSE === "true") {
           this.writeLn(this.getJson(response), true, false);
         } else {
           this.writeLn(chalk.redBright(response.message), true, true);
         }
       }
-      const exitCode = process.env.BW_CLEANEXIT ? 0 : 1;
+      const exitCode = process.env.BSAFEDC_CLEANEXIT ? 0 : 1;
       if (exitImmediately) {
         process.exit(exitCode);
       } else {
@@ -35,7 +35,7 @@ export abstract class BaseProgram {
       return;
     }
 
-    if (process.env.BW_RESPONSE === "true") {
+    if (process.env.BSAFEDC_RESPONSE === "true") {
       this.writeLn(this.getJson(response), true, false);
     } else if (response.data != null) {
       let out: string = dataProcessor != null ? dataProcessor() : null;
@@ -54,7 +54,7 @@ export abstract class BaseProgram {
         }
       }
 
-      if (out != null && process.env.BW_QUIET !== "true") {
+      if (out != null && process.env.BSAFEDC_QUIET !== "true") {
         this.writeLn(out, true, false);
       }
     }
@@ -66,7 +66,7 @@ export abstract class BaseProgram {
   }
 
   protected getJson(obj: any): string {
-    if (process.env.BW_PRETTY === "true") {
+    if (process.env.BSAFEDC_PRETTY === "true") {
       return JSON.stringify(obj, null, "  ");
     } else {
       return JSON.stringify(obj);
@@ -75,7 +75,7 @@ export abstract class BaseProgram {
 
   protected getMessage(response: Response): string {
     const message = response.data as MessageResponse;
-    if (process.env.BW_RAW === "true") {
+    if (process.env.BSAFEDC_RAW === "true") {
       return message.raw;
     }
 

@@ -8,7 +8,7 @@ import { ElectronLogService } from "jslib-electron/services/electronLog.service"
 import { ElectronMainMessagingService } from "jslib-electron/services/electronMainMessaging.service";
 import { ElectronStorageService } from "jslib-electron/services/electronStorage.service";
 import { TrayMain } from "jslib-electron/tray.main";
-import { UpdaterMain } from "jslib-electron/updater.main";
+// import { UpdaterMain } from "jslib-electron/updater.main";
 import { WindowMain } from "jslib-electron/window.main";
 
 import { DCCredentialStorageListener } from "./main/credential-storage-listener";
@@ -29,16 +29,16 @@ export class Main {
   windowMain: WindowMain;
   messagingMain: MessagingMain;
   menuMain: MenuMain;
-  updaterMain: UpdaterMain;
+  // updaterMain: UpdaterMain;
   trayMain: TrayMain;
 
   constructor() {
     // Set paths for portable builds
     let appDataPath = null;
-    if (process.env.BITWARDEN_CONNECTOR_APPDATA_DIR != null) {
-      appDataPath = process.env.BITWARDEN_CONNECTOR_APPDATA_DIR;
+    if (process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR != null) {
+      appDataPath = process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR;
     } else if (process.platform === "win32" && process.env.PORTABLE_EXECUTABLE_DIR != null) {
-      appDataPath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, "bitwarden-connector-appdata");
+      appDataPath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, "bravura-safe-connector-appdata");
     }
 
     if (appDataPath != null) {
@@ -77,6 +77,7 @@ export class Main {
     );
 
     this.menuMain = new MenuMain(this);
+/*    
     this.updaterMain = new UpdaterMain(
       this.i18nService,
       this.windowMain,
@@ -92,13 +93,13 @@ export class Main {
       },
       "bitwardenDirectoryConnector"
     );
-
+*/
     this.trayMain = new TrayMain(this.windowMain, this.i18nService, this.stateService);
 
     this.messagingMain = new MessagingMain(
       this.windowMain,
       this.menuMain,
-      this.updaterMain,
+//    this.updaterMain,
       this.trayMain
     );
     this.messagingService = new ElectronMainMessagingService(this.windowMain, (message) => {
@@ -106,7 +107,7 @@ export class Main {
     });
 
     this.credentialStorageListener = new DCCredentialStorageListener(
-      "Bitwarden Directory Connector"
+      "Bravura Safe Directory Connector"
     );
   }
 
@@ -117,7 +118,7 @@ export class Main {
         await this.i18nService.init(app.getLocale());
         this.menuMain.init();
         this.messagingMain.init();
-        await this.updaterMain.init();
+//      await this.updaterMain.init();
         await this.trayMain.init(this.i18nService.t("bitwardenDirectoryConnector"));
 
         if (!app.isDefaultProtocolClient("bwdc")) {

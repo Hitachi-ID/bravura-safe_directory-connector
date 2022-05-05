@@ -29,7 +29,7 @@ const plugins = [
     patterns: [{ from: "./src/locales", to: "locales" }],
   }),
   new webpack.DefinePlugin({
-    "process.env.BWCLI_ENV": JSON.stringify(ENV),
+    "process.env.BSAFEDCCLI_ENV": JSON.stringify(ENV),
   }),
   new webpack.BannerPlugin({
     banner: "#!/usr/bin/env node",
@@ -50,7 +50,7 @@ const config = {
     __filename: false,
   },
   entry: {
-    bwdc: "./src/bwdc.ts",
+    bsafedc: "./src/bwdc.ts",
   },
   optimization: {
     minimize: false,

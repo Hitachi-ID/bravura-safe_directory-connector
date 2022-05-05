@@ -54,8 +54,8 @@ export class EnvironmentService implements EnvironmentServiceAbstraction {
   }
 
   getSendUrl() {
-    return this.getWebVaultUrl() === "https://vault.bitwarden.com"
-      ? "https://send.bitwarden.com/#"
+    return this.getWebVaultUrl() === "https://hitachi-id.com"
+      ? "https://share.hitachi-id.com/#"
       : this.getWebVaultUrl() + "/#/send/";
   }
 

@@ -80,13 +80,13 @@ export class Main {
   twoFactorService: TwoFactorServiceAbstraction;
 
   constructor() {
-    const applicationName = "Bitwarden Directory Connector";
-    if (process.env.BITWARDENCLI_CONNECTOR_APPDATA_DIR) {
-      this.dataFilePath = path.resolve(process.env.BITWARDENCLI_CONNECTOR_APPDATA_DIR);
-    } else if (process.env.BITWARDEN_CONNECTOR_APPDATA_DIR) {
-      this.dataFilePath = path.resolve(process.env.BITWARDEN_CONNECTOR_APPDATA_DIR);
-    } else if (fs.existsSync(path.join(__dirname, "bitwarden-connector-appdata"))) {
-      this.dataFilePath = path.join(__dirname, "bitwarden-connector-appdata");
+    const applicationName = "Bravura Safe Directory Connector";
+    if (process.env.BRAVURASAFECLI_CONNECTOR_APPDATA_DIR) {
+      this.dataFilePath = path.resolve(process.env.BRAVURASAFECLI_CONNECTOR_APPDATA_DIR);
+    } else if (process.env.BBRAVURASAFE_CONNECTOR_APPDATA_DIR) {
+      this.dataFilePath = path.resolve(process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR);
+    } else if (fs.existsSync(path.join(__dirname, "bravura-safe-connector-appdata"))) {
+      this.dataFilePath = path.join(__dirname, "bravura-safe-connector-appdata");
     } else if (process.platform === "darwin") {
       this.dataFilePath = path.join(
         process.env.HOME,
@@ -100,7 +100,7 @@ export class Main {
       this.dataFilePath = path.join(process.env.HOME, ".config/" + applicationName);
     }
 
-    const plaintextSecrets = process.env.BITWARDENCLI_CONNECTOR_PLAINTEXT_SECRETS === "true";
+    const plaintextSecrets = process.env.BRAVURASAFECLI_CONNECTOR_PLAINTEXT_SECRETS === "true";
     this.i18nService = new I18nService("en", "./locales");
     this.platformUtilsService = new CliPlatformUtilsService(
       ClientType.DirectoryConnector,
@@ -108,7 +108,7 @@ export class Main {
     );
     this.logService = new ConsoleLogService(
       this.platformUtilsService.isDev(),
-      (level) => process.env.BITWARDENCLI_CONNECTOR_DEBUG !== "true" && level <= LogLevelType.Info
+      (level) => process.env.BRAVURASAFECLI_CONNECTOR_DEBUG !== "true" && level <= LogLevelType.Info
     );
     this.cryptoFunctionService = new NodeCryptoFunctionService();
     this.storageService = new LowdbStorageService(
@@ -133,7 +133,7 @@ export class Main {
       this.secureStorageService,
       this.logService,
       this.stateMigrationService,
-      process.env.BITWARDENCLI_CONNECTOR_PLAINTEXT_SECRETS !== "true",
+      process.env.BRAVURASAFECLI_CONNECTOR_PLAINTEXT_SECRETS !== "true",
       new StateFactory(GlobalState, Account)
     );
 

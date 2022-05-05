@@ -1,6 +1,6 @@
 {
   "name": "@bitwarden/directory-connector",
-  "description": "Sync your user directory to your Bitwarden organization.",
+  "description": "Sync your user directory to your Bravura Safe team.",
   "version": "0.0.0",
   "keywords": [
     "bitwarden",
@@ -8,11 +8,11 @@
     "vault",
     "password manager"
   ],
-  "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
-  "homepage": "https://bitwarden.com",
+  "author": "Bitwarden Inc. with modifications by Hitachi ID Systems",
+  "homepage": "https://hitachi-id.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitwarden/directory-connector"
+    "url": "https://gitlab.hitachi-id.com/product/bravura-safe/directory-connector"
   },
   "license": "GPL-3.0",
   "scripts": {
@@ -46,9 +46,9 @@
     "pack:win": "npm run clean:dist && electron-builder --win --x64 --ia32 -p never -c.win.certificateSubjectName=\"8bit Solutions LLC\"",
     "pack:win:ci": "npm run clean:dist && electron-builder --win --x64 --ia32 -p never",
     "pack:cli": "npm run pack:cli:win | npm run pack:cli:mac | npm run pack:cli:lin",
-    "pack:cli:win": "pkg ./src-cli --targets win-x64 --output ./dist-cli/windows/bwdc.exe",
-    "pack:cli:mac": "pkg ./src-cli --targets macos-x64 --output ./dist-cli/macos/bwdc",
-    "pack:cli:lin": "pkg ./src-cli --targets linux-x64 --output ./dist-cli/linux/bwdc",
+    "pack:cli:win": "pkg ./src-cli --targets win-x64 --output ./dist-cli/windows/bsafedc.exe",
+    "pack:cli:mac": "pkg ./src-cli --targets macos-x64 --output ./dist-cli/macos/bsafedc",
+    "pack:cli:lin": "pkg ./src-cli --targets linux-x64 --output ./dist-cli/linux/bsafedc",
     "dist:lin": "npm run build:dist && npm run pack:lin",
     "dist:mac": "npm run build:dist && npm run pack:mac",
     "dist:win": "npm run build:dist && npm run pack:win",
@@ -67,9 +67,9 @@
     "extraMetadata": {
       "name": "bitwarden-directory-connector"
     },
-    "productName": "Bitwarden Directory Connector",
+    "productName": "Bravura Safe Directory Connector",
     "appId": "com.bitwarden.directory-connector",
-    "copyright": "Copyright © 2015-2022 Bitwarden Inc.",
+    "copyright": "Copyright © 2015-2022 Bitwarden Inc., with modifications © 2022, Hitachi ID Systems, Inc.",
     "directories": {
       "buildResources": "resources",
       "output": "dist",
@@ -96,14 +96,14 @@
     },
     "linux": {
       "category": "Utility",
-      "synopsis": "Sync your user directory to your Bitwarden organization.",
+      "synopsis": "Sync your user directory to your Bravura Safe team.",
       "target": [
         "AppImage"
       ]
     },
     "dmg": {
-      "artifactName": "Bitwarden-Connector-${version}.${ext}",
-      "icon": "dmg.icns",
+      "artifactName": "Bravura-Safe-Connector-${version}.${ext}",
+      "icon": "icon.icns",
       "contents": [
         {
           "x": 150,
@@ -126,15 +126,15 @@
       "oneClick": false,
       "perMachine": true,
       "allowToChangeInstallationDirectory": true,
-      "artifactName": "Bitwarden-Connector-Installer-${version}.${ext}",
+      "artifactName": "Bravura-Safe-Connector-Installer-${version}.${ext}",
       "uninstallDisplayName": "${productName}",
       "deleteAppDataOnUninstall": true
     },
     "portable": {
-      "artifactName": "Bitwarden-Connector-Portable-${version}.${ext}"
+      "artifactName": "Bravura-Safe-Connector-Portable-${version}.${ext}"
     },
     "appImage": {
-      "artifactName": "Bitwarden-Connector-${version}-${arch}.${ext}"
+      "artifactName": "Bravura-Safe-Connector-${version}-${arch}.${ext}"
     }
   },
   "devDependencies": {

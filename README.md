@@ -1,9 +1,7 @@
-![Build](https://github.com/bitwarden/directory-connector/workflows/Build/badge.svg)
-[![Join the chat at https://gitter.im/bitwarden/Lobby](https://badges.gitter.im/bitwarden/Lobby.svg)](https://gitter.im/bitwarden/Lobby)
 
-# Bitwarden Directory Connector
+# Bravura Safe Directory Connector
 
-The Bitwarden Directory Connector is a a desktop application used to sync your Bitwarden enterprise organization to an existing directory of users and groups.
+The Bravura Safe Directory Connector is a a desktop application used to sync your Bravura Safe enterprise organization to an existing directory of users and groups.
 
 Supported directories:
 
@@ -15,20 +13,16 @@ Supported directories:
 
 The application is written using Electron with Angular and installs on Windows, macOS, and Linux distributions.
 
-[![Platforms](https://imgur.com/SLv9paA.png "Windows, macOS, and Linux")](https://bitwarden.com/help/directory-sync/#download-and-install)
-
-![Directory Connector](https://raw.githubusercontent.com/bitwarden/brand/master/screenshots/directory-connector-macos.png "Dashboard")
-
 ## Command-line Interface
 
-A command-line interface tool is also available for the Bitwarden Directory Connector. The Directory Connector CLI (`bwdc`) is written with TypeScript and Node.js and can also be run on Windows, macOS, and Linux distributions.
+A command-line interface tool is also available for the Bravura Safe Directory Connector. The Directory Connector CLI (`bwdc`) is written with TypeScript and Node.js and can also be run on Windows, macOS, and Linux distributions.
 
 ## CLI Documentation
 
-The Bitwarden Directory Connector CLI is self-documented with `--help` content and examples for every command. You should start exploring the CLI by using the global `--help` option:
+The Bravura Safe Directory Connector CLI is self-documented with `--help` content and examples for every command. You should start exploring the CLI by using the global `--help` option:
 
 ```bash
-bwdc --help
+bsafedc --help
 ```
 
 This option will list all available commands that you can use with the Directory Connector CLI.
@@ -36,13 +30,9 @@ This option will list all available commands that you can use with the Directory
 Additionally, you can run the `--help` option on a specific command to learn more about it:
 
 ```
-bwdc test --help
-bwdc config --help
+bsafedc test --help
+bsafedc config --help
 ```
-
-**Detailed Documentation**
-
-We provide detailed documentation and examples for using the Directory Connector CLI in our help center at https://bitwarden.com/help/directory-sync-cli/.
 
 ## Build/Run
 
@@ -74,14 +64,11 @@ You can then run commands from the `./build-cli` folder:
 node ./build-cli/bwdc.js --help
 ```
 
-## We're Hiring!
-
-Interested in contributing in a big way? Consider joining our team! We're hiring for many positions. Please take a look at our [Careers page](https://bitwarden.com/careers/) to see what opportunities are currently open as well as what it's like to work at Bitwarden.
-
 ## Contribute
 
-Code contributions are welcome! Please commit any pull requests against the `master` branch. Learn more about how to contribute by reading the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+Bravura Safe is a clone/fork of Bitwarden
 
+Please visit the [Community Forums](https://community.bitwarden.com/) for general Bitwarden community discussion and the development roadmap.
 Security audits and feedback are welcome. Please open an issue or email us privately if the report is sensitive in nature. You can read our security policy in the [`SECURITY.md`](SECURITY.md) file.
 
 ### Prettier

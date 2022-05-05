@@ -61,7 +61,7 @@ export class LoginCommand {
   }
 
   async run(email: string, password: string, options: program.OptionValues) {
-    this.canInteract = process.env.BW_NOINTERACTION !== "true";
+    this.canInteract = process.env.BSAFEDC_NOINTERACTION !== "true";
 
     let ssoCodeVerifier: string = null;
     let ssoCode: string = null;
@@ -429,8 +429,8 @@ export class LoginCommand {
   ): Promise<AuthResult | Response> {
     const badCaptcha = Response.badRequest(
       "Your authentication request has been flagged and will require user interaction to proceed.\n" +
-        "Please use your API key to validate this request and ensure BW_CLIENTSECRET is correct, if set.\n" +
-        "(https://bitwarden.com/help/cli-auth-challenges)"
+        "Please use your API key to validate this request and ensure BSAFEDC_CLIENTSECRET is correct, if set.\n" +
+        "(https://<instance>.safe.hitachi-id.net/help/cli-auth-challenges)"
     );
 
     try {
@@ -483,7 +483,7 @@ export class LoginCommand {
   private async apiClientId(): Promise<string> {
     let clientId: string = null;
 
-    const storedClientId: string = process.env.BW_CLIENTID;
+    const storedClientId: string = process.env.BSAFEDC_CLIENTID;
     if (storedClientId == null) {
       if (this.canInteract) {
         const answer: inquirer.Answers = await inquirer.createPromptModule({
@@ -508,7 +508,7 @@ export class LoginCommand {
     const additionalAuthenticationMessage = "Additional authentication required.\nAPI key ";
     let clientSecret: string = null;
 
-    const storedClientSecret: string = this.clientSecret || process.env.BW_CLIENTSECRET;
+    const storedClientSecret: string = this.clientSecret || process.env.BSAFEDC_CLIENTSECRET;
     if (this.canInteract && storedClientSecret == null) {
       const answer: inquirer.Answers = await inquirer.createPromptModule({
         output: process.stderr,
@@ -548,8 +548,8 @@ export class LoginCommand {
         if (code != null && receivedState != null && this.checkState(receivedState, state)) {
           res.writeHead(200);
           res.end(
-            "<html><head><title>Success | Bitwarden CLI</title></head><body>" +
-              "<h1>Successfully authenticated with the Bitwarden CLI</h1>" +
+            "<html><head><title>Success | Bravura Safe CLI</title></head><body>" +
+              "<h1>Successfully authenticated with the Bravura Safe CLI</h1>" +
               "<p>You may now close this tab and return to the terminal.</p>" +
               "</body></html>"
           );
@@ -562,8 +562,8 @@ export class LoginCommand {
         } else {
           res.writeHead(400);
           res.end(
-            "<html><head><title>Failed | Bitwarden CLI</title></head><body>" +
-              "<h1>Something went wrong logging into the Bitwarden CLI</h1>" +
+            "<html><head><title>Failed | Bravura Safe CLI</title></head><body>" +
+              "<h1>Something went wrong logging into the Bravura Safe CLI</h1>" +
               "<p>You may now close this tab and return to the terminal.</p>" +
               "</body></html>"
           );

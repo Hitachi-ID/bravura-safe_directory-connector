@@ -6,6 +6,15 @@ import { CipherType } from "jslib-common/enums/cipherType";
 import { Utils } from "jslib-common/misc/utils";
 import { CipherView } from "jslib-common/models/view/cipherView";
 
+const IconMap: any = {
+  "fa-globe": String.fromCharCode(0xf0ac),
+  "fa-sticky-note-o": String.fromCharCode(0xf24a),
+  "fa-id-card-o": String.fromCharCode(0xf2c3),
+  "fa-credit-card": String.fromCharCode(0xf09d),
+  "fa-android": String.fromCharCode(0xf17b),
+  "fa-apple": String.fromCharCode(0xf179),
+};
+
 /**
  * Provides a mapping from supported card brands to
  * the filenames of icon that should be present in images/cards folder of clients.
@@ -47,21 +56,25 @@ export class IconComponent implements OnChanges {
     this.load();
   }
 
+  get iconCode(): string {
+    return IconMap[this.icon];
+  }
+
   protected load() {
     switch (this.cipher.type) {
       case CipherType.Login:
-        this.icon = "bwi-globe";
+        this.icon = "fa-globe";
         this.setLoginIcon();
         break;
       case CipherType.SecureNote:
-        this.icon = "bwi-sticky-note";
+        this.icon = "fa-sticky-note-o";
         break;
       case CipherType.Card:
-        this.icon = "bwi-credit-card";
+        this.icon = "fa-credit-card";
         this.setCardIcon();
         break;
       case CipherType.Identity:
-        this.icon = "bwi-id-card";
+        this.icon = "fa-id-card-o";
         break;
       default:
         break;
@@ -74,10 +87,10 @@ export class IconComponent implements OnChanges {
       let isWebsite = false;
 
       if (hostnameUri.indexOf("androidapp://") === 0) {
-        this.icon = "bwi-android";
+        this.icon = "fa-android";
         this.image = null;
       } else if (hostnameUri.indexOf("iosapp://") === 0) {
-        this.icon = "bwi-apple";
+        this.icon = "fa-apple";
         this.image = null;
       } else if (
         this.imageEnabled &&
@@ -93,7 +106,7 @@ export class IconComponent implements OnChanges {
       if (this.imageEnabled && isWebsite) {
         try {
           this.image = this.iconsUrl + "/" + Utils.getHostname(hostnameUri) + "/icon.png";
-          this.fallbackImage = "images/bwi-globe.png";
+          this.fallbackImage = "images/fa-globe.png";
         } catch (e) {
           // Ignore error since the fallback icon will be shown if image is null.
         }

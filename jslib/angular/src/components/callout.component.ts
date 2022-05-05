@@ -35,7 +35,7 @@ export class CalloutComponent implements OnInit {
         this.title = this.i18nService.t("warning");
       }
       if (this.icon === undefined) {
-        this.icon = "bwi-exclamation-triangle";
+        this.icon = "fa-warning";
       }
     } else if (this.type === "error") {
       this.calloutStyle = "danger";
@@ -43,7 +43,7 @@ export class CalloutComponent implements OnInit {
         this.title = this.i18nService.t("error");
       }
       if (this.icon === undefined) {
-        this.icon = "bwi-error";
+        this.icon = "fa-bolt";
       }
     } else if (this.type === "tip") {
       this.calloutStyle = "success";
@@ -51,7 +51,7 @@ export class CalloutComponent implements OnInit {
         this.title = this.i18nService.t("tip");
       }
       if (this.icon === undefined) {
-        this.icon = "bwi-lightbulb";
+        this.icon = "fa-lightbulb-o";
       }
     }
   }

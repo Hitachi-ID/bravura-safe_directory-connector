@@ -11,7 +11,7 @@ export class ConsoleLogService extends BaseConsoleLogService {
       return;
     }
 
-    if (process.env.BW_RESPONSE === "true") {
+    if (process.env.BSAFEDC_RESPONSE === "true") {
       // eslint-disable-next-line
       console.error(message);
       return;

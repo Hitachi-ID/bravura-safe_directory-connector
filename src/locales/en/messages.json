@@ -1,6 +1,6 @@
 {
     "bitwardenDirectoryConnector": {
-        "message": "Bitwarden Directory Connector"
+        "message": "Bravura Safe Directory Connector"
     },
     "emailAddress": {
         "message": "Email Address"
@@ -30,7 +30,7 @@
         "message": "Client Secret is required."
     },
     "orgApiKeyRequired": {
-        "message": "Api Key must belong to an Organization"
+        "message": "Api Key must belong to a Team"
     },
     "failedToSaveCredentials": {
         "message": "Failed to save credentials"
@@ -116,7 +116,7 @@
         "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
     },
     "duoOrganizationDesc": {
-        "message": "Verify with Duo Security for your organization using the Duo Mobile app, SMS, phone call, or U2F security key.",
+        "message": "Verify with Duo Security for your team using the Duo Mobile app, SMS, phone call, or U2F security key.",
         "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated."
     },
     "u2fDesc": {
@@ -147,7 +147,7 @@
         "message": "Self-hosted Environment"
     },
     "selfHostedEnvironmentFooter": {
-        "message": "Specify the base URL of your on-premises hosted Bitwarden installation."
+        "message": "Specify the base URL of your on-premises hosted Bravura Safe installation."
     },
     "customEnvironment": {
         "message": "Custom Environment"
@@ -311,7 +311,7 @@
         "message": "Services"
     },
     "hideBitwarden": {
-        "message": "Hide Bitwarden Directory Connector"
+        "message": "Hide Bravura Safe Directory Connector"
     },
     "hideOthers": {
         "message": "Hide Others"
@@ -320,7 +320,7 @@
         "message": "Show All"
     },
     "quitBitwarden": {
-        "message": "Quit Bitwarden Directory Connector"
+        "message": "Quit Bravura Safe Directory Connector"
     },
     "window": {
         "message": "Window"
@@ -500,7 +500,7 @@
         "message": "Dashboard"
     },
     "organization": {
-        "message": "Organization"
+        "message": "Team"
     },
     "more": {
         "message": "More"
@@ -509,7 +509,7 @@
         "message": "Other"
     },
     "organizationUrl": {
-        "message": "Organization URL"
+        "message": "Team URL"
     },
     "token": {
         "message": "Token"
@@ -548,7 +548,7 @@
         "message": "Testing"
     },
     "testingDesc": {
-        "message": "You can run tests to see how your directory and sync settings are working. Tests will not sync to your Bitwarden organization."
+        "message": "You can run tests to see how your directory and sync settings are working. Tests will not sync to your Bravura Safe organization."
     },
     "testNow": {
         "message": "Test Now"
@@ -606,10 +606,10 @@
         "message": "Minimum sync interval is 5 minutes."
     },
     "welcome": {
-        "message": "Welcome to the Bitwarden Directory Connector"
+        "message": "Welcome to the Bravura Safe Directory Connector"
     },
     "logInDesc": {
-        "message": "Log in with an organization API key below."
+        "message": "Log in with a team API key below."
     },
     "dirConfigIncomplete": {
         "message": "Directory configuration incomplete."
@@ -647,7 +647,7 @@
         "message": "More than 2000 users or groups are expected to sync."
     },
     "overwriteExisting": {
-        "message": "Overwrite existing organization users based on current sync settings."
+        "message": "Overwrite existing team users based on current sync settings."
     },
     "clientId": {
         "message": "Client ID"
@@ -674,7 +674,7 @@
         "message": "Confirm New Master Password"
     },
     "masterPasswordPolicyInEffect": {
-        "message": "One or more organization policies require your master password to meet the following requirements:"
+        "message": "One or more team policies require your master password to meet the following requirements:"
     },
     "policyInEffectMinComplexity": {
         "message": "Minimum complexity score of $SCORE$",
@@ -740,7 +740,7 @@
         "message": "Weak Master Password"
     },
     "weakMasterPasswordDesc": {
-        "message": "The master password you have chosen is weak. You should use a strong master password (or a passphrase) to properly protect your Bitwarden account. Are you sure you want to use this master password?"
+        "message": "The master password you have chosen is weak. You should use a strong master password (or a passphrase) to properly protect your Bravura Safe account. Are you sure you want to use this master password?"
     },
     "errorOccurred": {
         "message": "An error has occurred."

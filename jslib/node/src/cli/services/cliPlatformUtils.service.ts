@@ -125,7 +125,7 @@ export class CliPlatformUtilsService implements PlatformUtilsService {
   }
 
   isDev(): boolean {
-    return process.env.BWCLI_ENV === "development";
+    return process.env.BSAFECLI_ENV === "development";
   }
 
   isSelfHost(): boolean {

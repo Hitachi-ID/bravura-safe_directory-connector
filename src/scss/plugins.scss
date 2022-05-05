@@ -29,7 +29,7 @@
     .icon i::before {
       float: left;
       font-style: normal;
-      font-family: $icomoon-font-family;
+      font-family: "Open Sans";
       font-size: 25px;
       line-height: 20px;
       padding-right: 15px;
@@ -48,34 +48,18 @@
     &.toast-danger,
     &.toast-error {
       background-color: $danger;
-
-      .icon i::before {
-        content: map_get($icons, "error");
-      }
     }
 
     &.toast-warning {
       background-color: $warning;
-
-      .icon i::before {
-        content: map_get($icons, "exclamation-triangle");
-      }
     }
 
     &.toast-info {
       background-color: $info;
-
-      .icon i:before {
-        content: map_get($icons, "info-circle");
-      }
     }
 
     &.toast-success {
       background-color: $success;
-
-      .icon i:before {
-        content: map_get($icons, "check");
-      }
     }
   }
 }

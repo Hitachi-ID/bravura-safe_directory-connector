@@ -19,8 +19,8 @@ describe("CLI Console log service", () => {
     restoreConsole();
   });
 
-  it("should redirect all console to error if BW_RESPONSE env is true", () => {
-    process.env.BW_RESPONSE = "true";
+  it("should redirect all console to error if BSAFEDC_RESPONSE env is true", () => {
+    process.env.BSAFEDC_RESPONSE = "true";
 
     logService.debug("this is a debug message");
     expect(caughtMessage).toMatchObject({
@@ -28,8 +28,8 @@ describe("CLI Console log service", () => {
     });
   });
 
-  it("should not redirect console to error if BW_RESPONSE != true", () => {
-    process.env.BW_RESPONSE = "false";
+  it("should not redirect console to error if BSAFEDC_RESPONSE != true", () => {
+    process.env.BSAFEDC_RESPONSE = "false";
 
     logService.debug("debug");
     logService.info("info");
