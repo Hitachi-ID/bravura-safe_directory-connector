@@ -2,7 +2,7 @@
   "name": "@bitwarden/directory-connector",
   "productName": "Bravura Safe Directory Connector",
   "description": "Sync your user directory to your Bravura Safe team.",
-  "version": "2022.03.01",
+  "version": "2022.05.01",
   "author": "Bitwarden Inc. with modifications by Hitachi ID Systems",
   "homepage": "https://hitachi-id.com",
   "license": "GPL-3.0",
@@ -16,7 +16,7 @@
     "electron-log": "4.4.1",
     "electron-store": "8.0.1",
     "electron-updater": "4.6.1",
-    "keytar": "7.7.0",
+    "keytar": "7.9.0",
     "rxjs": "^7.4.0"
   }
 }

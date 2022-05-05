@@ -22,7 +22,7 @@ A command-line interface tool is also available for the Bravura Safe Directory C
 The Bravura Safe Directory Connector CLI is self-documented with `--help` content and examples for every command. You should start exploring the CLI by using the global `--help` option:
 
 ```bash
-bwdc --help
+bsafedc --help
 ```
 
 This option will list all available commands that you can use with the Directory Connector CLI.
@@ -30,8 +30,8 @@ This option will list all available commands that you can use with the Directory
 Additionally, you can run the `--help` option on a specific command to learn more about it:
 
 ```
-bwdc test --help
-bwdc config --help
+bsafedc test --help
+bsafedc config --help
 ```
 
 ## Build/Run
