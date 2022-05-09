@@ -4,7 +4,6 @@ import { app } from "electron";
 
 import { StateFactory } from "jslib-common/factories/stateFactory";
 import { GlobalState } from "jslib-common/models/domain/globalState";
-import { KeytarStorageListener } from "jslib-electron/keytarStorageListener";
 import { ElectronLogService } from "jslib-electron/services/electronLog.service";
 import { ElectronMainMessagingService } from "jslib-electron/services/electronMainMessaging.service";
 import { ElectronStorageService } from "jslib-electron/services/electronStorage.service";
@@ -12,6 +11,7 @@ import { TrayMain } from "jslib-electron/tray.main";
 // import { UpdaterMain } from "jslib-electron/updater.main";
 import { WindowMain } from "jslib-electron/window.main";
 
+import { DCCredentialStorageListener } from "./main/credential-storage-listener";
 import { MenuMain } from "./main/menu.main";
 import { MessagingMain } from "./main/messaging.main";
 import { Account } from "./models/account";
@@ -23,20 +23,20 @@ export class Main {
   i18nService: I18nService;
   storageService: ElectronStorageService;
   messagingService: ElectronMainMessagingService;
-  keytarStorageListener: KeytarStorageListener;
+  credentialStorageListener: DCCredentialStorageListener;
   stateService: StateService;
 
   windowMain: WindowMain;
   messagingMain: MessagingMain;
   menuMain: MenuMain;
-//updaterMain: UpdaterMain;
+  // updaterMain: UpdaterMain;
   trayMain: TrayMain;
 
   constructor() {
     // Set paths for portable builds
     let appDataPath = null;
-    if (process.env.BITWARDEN_CONNECTOR_APPDATA_DIR != null) {
-      appDataPath = process.env.BITWARDEN_CONNECTOR_APPDATA_DIR;
+    if (process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR != null) {
+      appDataPath = process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR;
     } else if (process.platform === "win32" && process.env.PORTABLE_EXECUTABLE_DIR != null) {
       appDataPath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, "bravura-safe-connector-appdata");
     }
@@ -77,7 +77,7 @@ export class Main {
     );
 
     this.menuMain = new MenuMain(this);
-/*
+/*    
     this.updaterMain = new UpdaterMain(
       this.i18nService,
       this.windowMain,
@@ -106,11 +106,13 @@ export class Main {
       this.messagingMain.onMessage(message);
     });
 
-    this.keytarStorageListener = new KeytarStorageListener("Bravura Safe Directory Connector", null);
+    this.credentialStorageListener = new DCCredentialStorageListener(
+      "Bravura Safe Directory Connector"
+    );
   }
 
   bootstrap() {
-    this.keytarStorageListener.init();
+    this.credentialStorageListener.init();
     this.windowMain.init().then(
       async () => {
         await this.i18nService.init(app.getLocale());

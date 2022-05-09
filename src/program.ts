@@ -43,27 +43,27 @@ export class Program extends BaseProgram {
       .version(await this.main.platformUtilsService.getApplicationVersion(), "-v, --version");
 
     program.on("option:pretty", () => {
-      process.env.BW_PRETTY = "true";
+      process.env.BSAFEDC_PRETTY = "true";
     });
 
     program.on("option:raw", () => {
-      process.env.BW_RAW = "true";
+      process.env.BSAFEDC_RAW = "true";
     });
 
     program.on("option:quiet", () => {
-      process.env.BW_QUIET = "true";
+      process.env.BSAFEDC_QUIET = "true";
     });
 
     program.on("option:response", () => {
-      process.env.BW_RESPONSE = "true";
+      process.env.BSAFEDC_RESPONSE = "true";
     });
 
     program.on("option:cleanexit", () => {
-      process.env.BW_CLEANEXIT = "true";
+      process.env.BSAFEDC_CLEANEXIT = "true";
     });
 
     program.on("option:nointeraction", () => {
-      process.env.BW_NOINTERACTION = "true";
+      process.env.BSAFEDC_NOINTERACTION = "true";
     });
 
     program.on("command:*", () => {
@@ -108,10 +108,10 @@ export class Program extends BaseProgram {
         );
 
         if (!Utils.isNullOrWhitespace(clientId)) {
-          process.env.BW_CLIENTID = clientId;
+          process.env.BSAFEDC_CLIENTID = clientId;
         }
         if (!Utils.isNullOrWhitespace(clientSecret)) {
-          process.env.BW_CLIENTSECRET = clientSecret;
+          process.env.BSAFEDC_CLIENTSECRET = clientSecret;
         }
 
         options = Object.assign(options ?? {}, { apikey: true }); // force apikey use

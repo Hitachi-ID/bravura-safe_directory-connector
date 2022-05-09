@@ -61,7 +61,7 @@ jobs:
           echo "::set-output name=branch-name::$BRANCH_NAME"
 
       - name: Download all artifacts
-        uses: bitwarden/gh-actions/download-artifacts@23433be15ed6fd046ce12b6889c5184a8d9c8783
+        uses: bitwarden/gh-actions/download-artifacts@c1fa8e09871a860862d6bbe36184b06d2c7e35a8
         with:
           workflow: build.yml
           workflow_conclusion: success
@@ -73,12 +73,21 @@ jobs:
         env:
           PKG_VERSION: ${{ steps.retrieve-version.outputs.package_version }}
         with:
+<<<<<<< HEAD
           artifacts: "./bwdc-windows-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-macos-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-linux-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-windows-sha256-${{ env.PKG_VERSION }}.txt,
                       ./bwdc-macos-sha256-${{ env.PKG_VERSION }}.txt,
                       ./bwdc-linux-sha256-${{ env.PKG_VERSION }}.txt,
+=======
+          artifacts: "./bsafedc-windows-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-macos-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-linux-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-windows-sha256-${{ env.PKG_VERSION }}.txt,
+                      ./bsafedc-macos-sha256-${{ env.PKG_VERSION }}.txt,
+                      ./bsafedc-linux-sha256-${{ env.PKG_VERSION }}.txt,
+>>>>>>> tmp/gerry/dcv2_10_2
                       ./Bravura-Safe-Connector-Portable-${{ env.PKG_VERSION }}.exe,
                       ./Bravura-Safe-Connector-Installer-${{ env.PKG_VERSION }}.exe,
                       ./Bravura-Safe-Connector-Installer-${{ env.PKG_VERSION }}.exe.blockmap,
