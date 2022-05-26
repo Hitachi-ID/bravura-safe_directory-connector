@@ -1,3 +1,5 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
 @import "~ngx-toastr/toastr";
 
 @import "~bootstrap/scss/_variables.scss";
@@ -29,7 +31,7 @@
     .icon i::before {
       float: left;
       font-style: normal;
-      font-family: "Open Sans";
+      font-family: FontAwesome;
       font-size: 25px;
       line-height: 20px;
       padding-right: 15px;
@@ -48,18 +50,30 @@
     &.toast-danger,
     &.toast-error {
       background-color: $danger;
+      .icon i::before {
+        content: "\f0e7";
+      }
     }
 
     &.toast-warning {
       background-color: $warning;
+      .icon i::before {
+        content: "\f071";
+      }
     }
 
     &.toast-info {
       background-color: $info;
+      .icon i:before {
+        content: "\f05a";
+      }
     }
 
     &.toast-success {
       background-color: $success;
+      .icon i:before {
+        content: "\f00C";
+      }
     }
   }
 }
