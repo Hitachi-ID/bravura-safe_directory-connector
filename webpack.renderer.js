@@ -15,7 +15,7 @@ const common = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        exclude: /.*(bwi-font)\.svg/,
+        exclude: /.*(fontawesome-webfont)\.svg/,
         generator: {
           filename: "images/[name][ext]",
         },
