@@ -58,5 +58,6 @@ export class OrganizationLogInStrategy extends LogInStrategy {
         directoryConfigurations: new DirectoryConfigurations(),
       })
     );
+    await this.stateService.setApiKeyClientSecret(clientSecret);
   }
 }

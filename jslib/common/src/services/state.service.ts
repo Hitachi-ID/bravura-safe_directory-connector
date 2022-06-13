@@ -45,6 +45,7 @@ const partialKeys = {
   autoKey: "_masterkey_auto",
   biometricKey: "_masterkey_biometric",
   masterKey: "_masterkey",
+  apiKeyClientSecret: "_apiKeyClientSecret",
 };
 
 export class StateService<
@@ -200,14 +201,22 @@ export class StateService<
 
   async getApiKeyClientSecret(options?: StorageOptions): Promise<string> {
     options = await this.getTimeoutBasedStorageOptions(options);
-    return (await this.getAccount(options))?.keys?.apiKeyClientSecret;
+    return await this.secureStorageService.get(
+      `${options.userId}${partialKeys.apiKeyClientSecret}`,
+      options
+    );
   }
 
   async setApiKeyClientSecret(value: string, options?: StorageOptions): Promise<void> {
     options = await this.getTimeoutBasedStorageOptions(options);
     const account = await this.getAccount(options);
-    account.keys.apiKeyClientSecret = value;
+    account.keys.apiKeyClientSecret = "[STORED SECURELY]";
     await this.saveAccount(account, options);
+    await this.secureStorageService.save(
+      `${options.userId}${partialKeys.apiKeyClientSecret}`,
+      value,
+      options
+    );
   }
 
   async getAutoConfirmFingerPrints(options?: StorageOptions): Promise<boolean> {
@@ -2114,7 +2123,7 @@ export class StateService<
       this.reconcileOptions(options, await this.defaultOnDiskOptions())
     );
   }
-  
+
   async getFoldersCollapsed(options?: StorageOptions): Promise<boolean> {
     return (
       (await this.getAccount(this.reconcileOptions(options, await this.defaultOnDiskOptions())))
