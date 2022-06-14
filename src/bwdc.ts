@@ -33,8 +33,8 @@ import { NodeCryptoFunctionService } from "jslib-node/services/nodeCryptoFunctio
 import { Account } from "./models/account";
 import { Program } from "./program";
 import { AuthService } from "./services/auth.service";
+import { ElectronSecureStorageService } from "./services/electronSecureStorage.service";
 import { I18nService } from "./services/i18n.service";
-import { KeytarSecureStorageService } from "./services/keytarSecureStorage.service";
 import { LowdbStorageService } from "./services/lowdbStorage.service";
 import { NoopTwoFactorService } from "./services/noop/noopTwoFactor.service";
 import { StateService } from "./services/state.service";
@@ -83,7 +83,7 @@ export class Main {
     const applicationName = "Bravura Safe Directory Connector";
     if (process.env.BRAVURASAFECLI_CONNECTOR_APPDATA_DIR) {
       this.dataFilePath = path.resolve(process.env.BRAVURASAFECLI_CONNECTOR_APPDATA_DIR);
-    } else if (process.env.BBRAVURASAFE_CONNECTOR_APPDATA_DIR) {
+    } else if (process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR) {
       this.dataFilePath = path.resolve(process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR);
     } else if (fs.existsSync(path.join(__dirname, "bravura-safe-connector-appdata"))) {
       this.dataFilePath = path.join(__dirname, "bravura-safe-connector-appdata");
@@ -100,7 +100,7 @@ export class Main {
       this.dataFilePath = path.join(process.env.HOME, ".config/" + applicationName);
     }
 
-    const plaintextSecrets = process.env.BRAVURASAFECLI_CONNECTOR_PLAINTEXT_SECRETS === "true";
+    const plaintextSecrets = false;
     this.i18nService = new I18nService("en", "./locales");
     this.platformUtilsService = new CliPlatformUtilsService(
       ClientType.DirectoryConnector,
@@ -120,7 +120,7 @@ export class Main {
     );
     this.secureStorageService = plaintextSecrets
       ? this.storageService
-      : new KeytarSecureStorageService(applicationName);
+      : new ElectronSecureStorageService(applicationName, this.dataFilePath);
 
     this.stateMigrationService = new StateMigrationService(
       this.storageService,
@@ -133,7 +133,7 @@ export class Main {
       this.secureStorageService,
       this.logService,
       this.stateMigrationService,
-      process.env.BRAVURASAFECLI_CONNECTOR_PLAINTEXT_SECRETS !== "true",
+      true,
       new StateFactory(GlobalState, Account)
     );
 

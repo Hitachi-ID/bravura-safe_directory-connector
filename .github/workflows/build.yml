@@ -294,11 +294,7 @@ jobs:
           {
             BLOCK "040904b0"
             {
-<<<<<<< HEAD
-              VALUE "CompanyName", "Bitwarden Inc."
-=======
               VALUE "CompanyName", "Hitachi ID Systems Inc."
->>>>>>> tmp/gerry/dcv2_10_2
               VALUE "ProductName", "Bravura Safe"
               VALUE "FileDescription", "Bravura Safe Directory Connector CLI"
               VALUE "FileVersion", "$env:_PACKAGE_VERSION"
@@ -624,11 +620,7 @@ jobs:
       - name: Upload .dmg Blockmap artifact
         uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
         with:
-<<<<<<< HEAD
           name: Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
-=======
-          name: Bitwarden-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
->>>>>>> tmp/gerry/dcv2_10_2
           path: ./dist/Bravura-Safe-Connector-${{ env._PACKAGE_VERSION }}.dmg.blockmap
           if-no-files-found: error
 
