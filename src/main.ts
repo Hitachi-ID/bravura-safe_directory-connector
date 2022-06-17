@@ -9,6 +9,7 @@ import { ElectronMainMessagingService } from "jslib-electron/services/electronMa
 import { ElectronStorageService } from "jslib-electron/services/electronStorage.service";
 import { TrayMain } from "jslib-electron/tray.main";
 import { WindowMain } from "jslib-electron/window.main";
+import { NodeCryptoFunctionService } from "jslib-node/services/nodeCryptoFunction.service";
 
 import { ElectronDCCredentialStorageListener } from "./main/electron-credential-storage-listener";
 import { MenuMain } from "./main/menu.main";
@@ -85,15 +86,18 @@ export class Main {
       this.messagingMain.onMessage(message);
     });
 
+    const nodeCryptoFunctionService = new NodeCryptoFunctionService();
     this.credentialStorageListener = new ElectronDCCredentialStorageListener(
-      "Bravura Safe Directory Connector"
+      "Bravura Safe Directory Connector",
+      nodeCryptoFunctionService
     );
   }
 
   bootstrap() {
-    this.credentialStorageListener.init();
     this.windowMain.init().then(
       async () => {
+        await this.credentialStorageListener.initialize();
+        this.credentialStorageListener.init();
         await this.i18nService.init(app.getLocale());
         this.menuMain.init();
         this.messagingMain.init();

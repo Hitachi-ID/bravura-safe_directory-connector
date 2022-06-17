@@ -17,6 +17,9 @@
     "electron-store": "8.0.1",
     "electron-updater": "4.6.1",
     "keytar": "7.9.0",
-    "rxjs": "^7.4.0"
+    "node-machine-id": "^1.1.12",
+    "node-forge": "^1.2.1",
+    "rxjs": "^7.4.0",
+    "tldjs": "^2.3.1"
   }
 }

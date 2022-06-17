@@ -78,6 +78,7 @@ export class Main {
   organizationService: OrganizationService;
   providerService: ProviderService;
   twoFactorService: TwoFactorServiceAbstraction;
+  electronSecureStorageService: ElectronSecureStorageService;
 
   constructor() {
     const applicationName = "Bravura Safe Directory Connector";
@@ -118,9 +119,14 @@ export class Main {
       false,
       true
     );
+    this.electronSecureStorageService = new ElectronSecureStorageService(
+      applicationName,
+      this.dataFilePath,
+      this.cryptoFunctionService
+    );
     this.secureStorageService = plaintextSecrets
       ? this.storageService
-      : new ElectronSecureStorageService(applicationName, this.dataFilePath);
+      : this.electronSecureStorageService;
 
     this.stateMigrationService = new StateMigrationService(
       this.storageService,
@@ -272,6 +278,7 @@ export class Main {
   }
 
   private async init() {
+    await this.electronSecureStorageService.init();
     await this.storageService.init();
     await this.stateService.init();
     this.containerService.attachToWindow(global);
