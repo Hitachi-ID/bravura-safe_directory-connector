@@ -38,8 +38,9 @@ export class ElectronSecureStorageService implements StorageService {
   }
 
   get<T>(key: string): Promise<T> {
-    if (!this.store.has(key) || key.length <= 2) return Promise.resolve(null);
-    return Promise.resolve(JSON.parse(this.store.get(key)).slice(1, -1) as T);
+    if (this.store.get(key) === "null" || this.store.get(key) === undefined)
+      return Promise.resolve(null);
+    return Promise.resolve(JSON.parse(this.store.get(key)).replace(/\\n/g, "\r\n") as T);
   }
 
   async has(key: string): Promise<boolean> {
@@ -47,6 +48,7 @@ export class ElectronSecureStorageService implements StorageService {
   }
 
   save(key: string, obj: any): Promise<any> {
+    if (!obj) return Promise.resolve(false);
     this.store.set(key, JSON.stringify(obj));
     return Promise.resolve(true);
   }

@@ -43,11 +43,11 @@ export class ElectronDCCredentialStorageListener {
         let val: string | boolean = null;
         if (message.action && message.key) {
           if (message.action === "getPassword") {
-            val = JSON.parse(this.store.get(message.key));
+            val = this.store.get(message.key);
           } else if (message.action === "hasPassword") {
             val = await this.store.has(message.key);
           } else if (message.action === "setPassword" && message.value) {
-            await this.store.set(message.key, JSON.stringify(message.value));
+            await this.store.set(message.key, message.value);
           } else if (message.action === "deletePassword") {
             await this.store.delete(message.key);
           }
