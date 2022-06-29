@@ -1,22 +1,20 @@
-import { OrganizationLogInStrategy } from "../misc/logInStrategies/organizationLogIn.strategy";
-
 import { ApiService } from "jslib-common/abstractions/api.service";
 import { AppIdService } from "jslib-common/abstractions/appId.service";
 import { CryptoService } from "jslib-common/abstractions/crypto.service";
 import { EnvironmentService } from "jslib-common/abstractions/environment.service";
+import { I18nService } from "jslib-common/abstractions/i18n.service";
 import { KeyConnectorService } from "jslib-common/abstractions/keyConnector.service";
 import { LogService } from "jslib-common/abstractions/log.service";
 import { MessagingService } from "jslib-common/abstractions/messaging.service";
 import { PlatformUtilsService } from "jslib-common/abstractions/platformUtils.service";
 import { TokenService } from "jslib-common/abstractions/token.service";
 import { TwoFactorService } from "jslib-common/abstractions/twoFactor.service";
-
-import { AuthService as AuthServiceBase } from "jslib-common/services/auth.service";
-
 import { AuthResult } from "jslib-common/models/domain/authResult";
 import { ApiLogInCredentials } from "jslib-common/models/domain/logInCredentials";
+import { AuthService as AuthServiceBase } from "jslib-common/services/auth.service";
 
 import { StateService } from "../abstractions/state.service";
+import { OrganizationLogInStrategy } from "../misc/logInStrategies/organizationLogIn.strategy";
 
 export class AuthService extends AuthServiceBase {
   constructor(
@@ -30,7 +28,8 @@ export class AuthService extends AuthServiceBase {
     keyConnectorService: KeyConnectorService,
     environmentService: EnvironmentService,
     stateService: StateService,
-    twoFactorService: TwoFactorService
+    twoFactorService: TwoFactorService,
+    i18nService: I18nService
   ) {
     super(
       cryptoService,
@@ -43,7 +42,8 @@ export class AuthService extends AuthServiceBase {
       keyConnectorService,
       environmentService,
       stateService,
-      twoFactorService
+      twoFactorService,
+      i18nService
     );
   }
 

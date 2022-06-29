@@ -12,6 +12,7 @@ on:
         options:
           - Initial Release
           - Redeploy
+          - Dry Run
 
 jobs:
   setup:
@@ -19,16 +20,17 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Branch check
+        if: ${{ github.event.inputs.release_type != 'Dry Run' }}
         run: |
-          if [[ "$GITHUB_REF" != "refs/heads/rc" ]] && [[ "$GITHUB_REF" != "refs/heads/hotfix" ]]; then
+          if [[ "$GITHUB_REF" != "refs/heads/rc" ]] && [[ "$GITHUB_REF" != "refs/heads/hotfix-rc" ]]; then
             echo "==================================="
-            echo "[!] Can only release from the 'rc' or 'hotfix' branches"
+            echo "[!] Can only release from the 'rc' or 'hotfix-rc' branches"
             echo "==================================="
             exit 1
           fi
 
       - name: Checkout repo
-        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
 
       - name: Retrieve Directory Connector release version
         id: retrieve-version
@@ -59,30 +61,40 @@ jobs:
           echo "::set-output name=branch-name::$BRANCH_NAME"
 
       - name: Download all artifacts
-        uses: bitwarden/gh-actions/download-artifacts@23433be15ed6fd046ce12b6889c5184a8d9c8783
+        uses: bitwarden/gh-actions/download-artifacts@c1fa8e09871a860862d6bbe36184b06d2c7e35a8
         with:
           workflow: build.yml
           workflow_conclusion: success
           branch: ${{ steps.branch.outputs.branch-name }}
 
       - name: Create release
-        uses: ncipollo/release-action@95215a3cb6e6a1908b3c44e00b4fdb15548b1e09  # v2.8.5
+        if: ${{ github.event.inputs.release_type != 'Dry Run' }}
+        uses: ncipollo/release-action@40bb172bd05f266cf9ba4ff965cb61e9ee5f6d01  # v1.9.0
         env:
           PKG_VERSION: ${{ steps.retrieve-version.outputs.package_version }}
         with:
+<<<<<<< HEAD
           artifacts: "./bwdc-windows-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-macos-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-linux-${{ env.PKG_VERSION }}.zip,
                       ./bwdc-windows-sha256-${{ env.PKG_VERSION }}.txt,
                       ./bwdc-macos-sha256-${{ env.PKG_VERSION }}.txt,
                       ./bwdc-linux-sha256-${{ env.PKG_VERSION }}.txt,
-                      ./Bitwarden-Connector-Portable-${{ env.PKG_VERSION }}.exe,
-                      ./Bitwarden-Connector-Installer-${{ env.PKG_VERSION }}.exe,
-                      ./Bitwarden-Connector-Installer-${{ env.PKG_VERSION }}.exe.blockmap,
-                      ./Bitwarden-Connector-${{ env.PKG_VERSION }}-x86_64.AppImage,
-                      ./Bitwarden-Connector-${{ env.PKG_VERSION }}-mac.zip,
-                      ./Bitwarden-Connector-${{ env.PKG_VERSION }}.dmg,
-                      ./Bitwarden-Connector-${{ env.PKG_VERSION }}.dmg.blockmap,
+=======
+          artifacts: "./bsafedc-windows-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-macos-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-linux-${{ env.PKG_VERSION }}.zip,
+                      ./bsafedc-windows-sha256-${{ env.PKG_VERSION }}.txt,
+                      ./bsafedc-macos-sha256-${{ env.PKG_VERSION }}.txt,
+                      ./bsafedc-linux-sha256-${{ env.PKG_VERSION }}.txt,
+>>>>>>> tmp/gerry/dcv2_10_2
+                      ./Bravura-Safe-Connector-Portable-${{ env.PKG_VERSION }}.exe,
+                      ./Bravura-Safe-Connector-Installer-${{ env.PKG_VERSION }}.exe,
+                      ./Bravura-Safe-Connector-Installer-${{ env.PKG_VERSION }}.exe.blockmap,
+                      ./Bravura-Safe-Connector-${{ env.PKG_VERSION }}-x86_64.AppImage,
+                      ./Bravura-Safe-Connector-${{ env.PKG_VERSION }}-mac.zip,
+                      ./Bravura-Safe-Connector-${{ env.PKG_VERSION }}.dmg,
+                      ./Bravura-Safe-Connector-${{ env.PKG_VERSION }}.dmg.blockmap,
                       ./latest-linux.yml,
                       ./latest-mac.yml,
                       ./latest.yml"

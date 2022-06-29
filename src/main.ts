@@ -1,47 +1,46 @@
-import { app } from "electron";
 import * as path from "path";
 
-import { MenuMain } from "./main/menu.main";
-import { MessagingMain } from "./main/messaging.main";
-import { I18nService } from "./services/i18n.service";
+import { app } from "electron";
 
-import { KeytarStorageListener } from "jslib-electron/keytarStorageListener";
+import { StateFactory } from "jslib-common/factories/stateFactory";
+import { GlobalState } from "jslib-common/models/domain/globalState";
 import { ElectronLogService } from "jslib-electron/services/electronLog.service";
 import { ElectronMainMessagingService } from "jslib-electron/services/electronMainMessaging.service";
 import { ElectronStorageService } from "jslib-electron/services/electronStorage.service";
 import { TrayMain } from "jslib-electron/tray.main";
-import { UpdaterMain } from "jslib-electron/updater.main";
 import { WindowMain } from "jslib-electron/window.main";
+import { NodeCryptoFunctionService } from "jslib-node/services/nodeCryptoFunction.service";
 
-import { StateService } from "./services/state.service";
-
+import { ElectronDCCredentialStorageListener } from "./main/electron-credential-storage-listener";
+import { MenuMain } from "./main/menu.main";
+import { MessagingMain } from "./main/messaging.main";
 import { Account } from "./models/account";
-
-import { StateFactory } from "jslib-common/factories/stateFactory";
-
-import { GlobalState } from "jslib-common/models/domain/globalState";
+import { I18nService } from "./services/i18n.service";
+import { StateService } from "./services/state.service";
 
 export class Main {
   logService: ElectronLogService;
   i18nService: I18nService;
   storageService: ElectronStorageService;
   messagingService: ElectronMainMessagingService;
-  keytarStorageListener: KeytarStorageListener;
+  credentialStorageListener: ElectronDCCredentialStorageListener;
   stateService: StateService;
 
   windowMain: WindowMain;
   messagingMain: MessagingMain;
   menuMain: MenuMain;
-  updaterMain: UpdaterMain;
   trayMain: TrayMain;
 
   constructor() {
     // Set paths for portable builds
     let appDataPath = null;
-    if (process.env.BITWARDEN_CONNECTOR_APPDATA_DIR != null) {
-      appDataPath = process.env.BITWARDEN_CONNECTOR_APPDATA_DIR;
+    if (process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR != null) {
+      appDataPath = process.env.BRAVURASAFE_CONNECTOR_APPDATA_DIR;
     } else if (process.platform === "win32" && process.env.PORTABLE_EXECUTABLE_DIR != null) {
-      appDataPath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, "bitwarden-connector-appdata");
+      appDataPath = path.join(
+        process.env.PORTABLE_EXECUTABLE_DIR,
+        "bravura-safe-connector-appdata"
+      );
     }
 
     if (appDataPath != null) {
@@ -53,7 +52,7 @@ export class Main {
     const watch = args.some((val) => val === "--watch");
 
     if (watch) {
-      // tslint:disable-next-line
+      // eslint-disable-next-line
       require("electron-reload")(__dirname, {});
     }
 
@@ -80,45 +79,28 @@ export class Main {
     );
 
     this.menuMain = new MenuMain(this);
-    this.updaterMain = new UpdaterMain(
-      this.i18nService,
-      this.windowMain,
-      "directory-connector",
-      () => {
-        this.messagingService.send("checkingForUpdate");
-      },
-      () => {
-        this.messagingService.send("doneCheckingForUpdate");
-      },
-      () => {
-        this.messagingService.send("doneCheckingForUpdate");
-      },
-      "bitwardenDirectoryConnector"
-    );
-
     this.trayMain = new TrayMain(this.windowMain, this.i18nService, this.stateService);
 
-    this.messagingMain = new MessagingMain(
-      this.windowMain,
-      this.menuMain,
-      this.updaterMain,
-      this.trayMain
-    );
+    this.messagingMain = new MessagingMain(this.windowMain, this.menuMain, this.trayMain);
     this.messagingService = new ElectronMainMessagingService(this.windowMain, (message) => {
       this.messagingMain.onMessage(message);
     });
 
-    this.keytarStorageListener = new KeytarStorageListener("Bitwarden Directory Connector", null);
+    const nodeCryptoFunctionService = new NodeCryptoFunctionService();
+    this.credentialStorageListener = new ElectronDCCredentialStorageListener(
+      "Bravura Safe Directory Connector",
+      nodeCryptoFunctionService
+    );
   }
 
   bootstrap() {
-    this.keytarStorageListener.init();
     this.windowMain.init().then(
       async () => {
+        await this.credentialStorageListener.initialize();
+        this.credentialStorageListener.init();
         await this.i18nService.init(app.getLocale());
         this.menuMain.init();
         this.messagingMain.init();
-        await this.updaterMain.init();
         await this.trayMain.init(this.i18nService.t("bitwardenDirectoryConnector"));
 
         if (!app.isDefaultProtocolClient("bwdc")) {
@@ -132,7 +114,7 @@ export class Main {
         });
       },
       (e: any) => {
-        // tslint:disable-next-line
+        // eslint-disable-next-line
         console.error(e);
       }
     );

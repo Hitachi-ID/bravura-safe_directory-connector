@@ -7,16 +7,18 @@
           {{ "bitwardenDirectoryConnector" | i18n }}
           <br />
           {{ "version" | i18n: version }} <br />
-          &copy; Bitwarden Inc. LLC 2015-{{ year }}
+          &copy; Bitwarden Inc. LLC 2015-{{ year }}, with modifications &copy; 2022, Hitachi ID
+          Systems, Inc.
         </p>
         <button
+          hidden="hidden"
           class="btn btn-primary"
           type="button"
           (click)="update()"
           [disabled]="checkingForUpdate"
         >
-          <i class="bwi bwi-download bwi-fw" [hidden]="checkingForUpdate"></i>
-          <i class="bwi bwi-spinner bwi-fw bwi-spin" [hidden]="!checkingForUpdate"></i>
+          <i class="fa fa-download fa-fw" [hidden]="checkingForUpdate"></i>
+          <i class="fa fa-spinner fa-fw fa-spin" [hidden]="!checkingForUpdate"></i>
           {{ "checkForUpdates" | i18n }}
         </button>
       </div>

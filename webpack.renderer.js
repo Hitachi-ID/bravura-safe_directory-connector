@@ -10,17 +10,12 @@ const common = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        enforce: "pre",
-        loader: "tslint-loader",
-      },
-      {
         test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
         loader: "@ngtools/webpack",
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        exclude: /.*(bwi-font)\.svg/,
+        exclude: /.*(fontawesome-webfont)\.svg/,
         generator: {
           filename: "images/[name][ext]",
         },

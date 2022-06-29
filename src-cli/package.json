@@ -1,24 +1,25 @@
 {
   "name": "@bitwarden/directory-connector",
-  "productName": "Bitwarden Directory Connector",
-  "description": "Sync your user directory to your Bitwarden organization.",
-  "version": "2.9.5",
-  "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
-  "homepage": "https://bitwarden.com",
+  "productName": "Bravura Safe Directory Connector",
+  "description": "Sync your user directory to your Bravura Safe team.",
+  "version": "2022.06.01",
+  "author": "Bitwarden Inc. with modifications by Hitachi ID Systems",
+  "homepage": "https://hitachi-id.com",
   "license": "GPL-3.0",
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitwarden/directory-connector"
+    "url": "https://gitlab.hitachi-id.com/product/bravura-safe/directory-connector"
   },
   "bin": {
-    "bwdc": "../build-cli/bwdc.js"
+    "bsafedc": "../build-cli/bsafedc.js"
   },
   "pkg": {
     "assets": "../build-cli/**/*"
   },
   "dependencies": {
     "browser-hrtime": "^1.1.8",
-    "keytar": "^7.7.0"
+    "keytar": "^7.9.0",
+    "node-machine-id": "^1.1.12"
   }
 }
